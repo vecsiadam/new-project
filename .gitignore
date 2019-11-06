@@ -202,6 +202,9 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 .flattened-pom.xml
+*.cmd
+mvnw
+*.mvn
 
 ### Windows ###
 # Windows thumbnail cache files
