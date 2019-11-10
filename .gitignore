@@ -233,4 +233,5 @@ $RECYCLE.BIN/
 *.lnk
 
 *.md
+*.checkstyle
 # End of https://www.gitignore.io/api/java,linux,macos,maven,windows,eclipse,angular
