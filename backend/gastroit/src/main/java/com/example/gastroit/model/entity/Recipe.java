@@ -1,6 +1,5 @@
 package com.example.gastroit.model.entity;
 
-
 import java.util.Date;
 import java.util.List;
 
@@ -12,11 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.boot.context.properties.ConstructorBinding;
-
 import com.example.gastroit.model.dto.Status;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
@@ -27,7 +23,7 @@ public class Recipe {
 	}
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
 	@ElementCollection
@@ -40,7 +36,7 @@ public class Recipe {
 	private String modifierUser;
 	@Enumerated(EnumType.STRING)
 	private Status status;
-	
+
 	public Recipe(String name, List<String> ingredients, String description, int ingridientsNumber, String author,
 			Date date, Date modifiedDate, String modifierUser, Status status) {
 		super();
@@ -54,7 +50,5 @@ public class Recipe {
 		this.modifierUser = modifierUser;
 		this.status = status;
 	}
-	
-	
-}
 
+}

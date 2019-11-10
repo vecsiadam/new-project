@@ -18,21 +18,15 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
 	@Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).select()
-            .apis(RequestHandlerSelectors
-                .basePackage("com.example.gastroit.controller"))
-            .paths(PathSelectors.regex("/.*"))
-            .build().apiInfo(apiInfo());
-    }
-	 
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("com.example.gastroit.controller"))
+				.paths(PathSelectors.regex("/.*")).build().apiInfo(apiInfo());
+	}
+
 	private ApiInfo apiInfo() {
-	    return new ApiInfo(
-	      "GastroIT rest api", 
-	      "Some custom description of API.", 
-	      "API TOS", 
-	      "Terms of service", 
-	      new Contact("Adam VECSI", "www.gastroit.com", "adamvecsi94@gmail.com"), 
-	      "License of API", "API license URL", Collections.emptyList());
+		return new ApiInfo("GastroIT rest api", "Some custom description of API.", "API TOS", "Terms of service",
+				new Contact("Adam VECSI", "www.gastroit.com", "adamvecsi94@gmail.com"), "License of API",
+				"API license URL", Collections.emptyList());
 	}
 }

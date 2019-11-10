@@ -11,7 +11,7 @@ import com.example.gastroit.model.entity.Recipe;
 import com.example.gastroit.repository.RecipeRepository;
 
 @Service
-public class RecipeServiceImpl implements RecipeService{
+public class RecipeServiceImpl implements RecipeService {
 	@Autowired
 	private RecipeRepository newProjectRepository;
 
@@ -20,11 +20,10 @@ public class RecipeServiceImpl implements RecipeService{
 		RecipeDTOToRecipeConverter convert = new RecipeDTOToRecipeConverter();
 		newProjectRepository.save(convert.converter(recipe));
 	}
-	
+
 	@Override
 	public List<Recipe> list() {
 		return newProjectRepository.findAll();
 	}
 
-	
 }
