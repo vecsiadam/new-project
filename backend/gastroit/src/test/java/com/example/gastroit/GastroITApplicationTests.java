@@ -1,10 +1,10 @@
-package com.example.newproject;
+package com.example.gastroit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NewprojectApplicationTests {
+class GastroITApplicationTests {
 
 	@Test
 	void contextLoads() {
