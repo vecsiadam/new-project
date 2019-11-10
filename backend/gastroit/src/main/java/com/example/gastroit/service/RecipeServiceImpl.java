@@ -6,19 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.gastroit.model.dto.RecipeDTO;
+import com.example.gastroit.model.entity.Recipe;
 import com.example.gastroit.repository.RecipeRepository;
 
 @Service
-public class RecipeServiceImpl {
-
+public class RecipeServiceImpl implements RecipeService{
 	@Autowired
 	private RecipeRepository newProjectRepository;
 
-	public void create(RecipeDTO model) {
+	@Override
+	public void create(Recipe model) {
 		newProjectRepository.save(model);
 	}
 	
-	public List<RecipeDTO> list() {
+	@Override
+	public List<Recipe> list() {
 		return newProjectRepository.findAll();
 	}
+
+	
 }

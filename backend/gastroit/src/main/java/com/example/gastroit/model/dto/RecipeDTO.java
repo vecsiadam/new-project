@@ -13,17 +13,11 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-@Entity
 public class RecipeDTO {
 	
-	public RecipeDTO() {
-	}
-
-	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	
 	private Long id;
 	private String name;
-	@ElementCollection
 	private List<String> ingredients;
 	private String description;
 	private int ingridientsNumber;
