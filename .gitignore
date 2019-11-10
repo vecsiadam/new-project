@@ -65,6 +65,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+.checkstyle
 
 # External tool builders
 .externalToolBuilders/
