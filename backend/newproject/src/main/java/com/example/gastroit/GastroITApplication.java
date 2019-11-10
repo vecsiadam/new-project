@@ -1,13 +1,13 @@
-package com.example.newproject;
+package com.example.gastroit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NewprojectApplication {
+public class GastroITApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NewprojectApplication.class, args);
+		SpringApplication.run(GastroITApplication.class, args);
 	}
 
 }

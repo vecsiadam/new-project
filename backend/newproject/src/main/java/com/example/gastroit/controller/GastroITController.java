@@ -1,4 +1,4 @@
-package com.example.newproject.controller;
+package com.example.gastroit.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,23 +10,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.newproject.model.dto.NewProjectDTO;
-import com.example.newproject.service.NewProjectServiceImpl;
+import com.example.gastroit.model.dto.GastroITDTO;
+import com.example.gastroit.service.GastroITServiceImpl;
 
 @RestController
 @RequestMapping("/")
-public class NewProjectController {
+public class GastroITController {
 	
 	@GetMapping(produces = "application/json")
-	private List<NewProjectDTO> list() {
+	private List<GastroITDTO> list() {
 		return service.list();
 	}
 	
 	@Autowired
-	private  NewProjectServiceImpl service;
+	private  GastroITServiceImpl service;
 	
 	@PostMapping(path = "/create", consumes = "application/json")
-	public void create(@RequestBody NewProjectDTO model) {
+	public void create(@RequestBody GastroITDTO model) {
 	    service.create(model);
 	}
 }

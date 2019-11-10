@@ -1,4 +1,4 @@
-package com.example.newproject.model.dto;
+package com.example.gastroit.model.dto;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 @Entity
-public class NewProjectDTO {
+public class GastroITDTO {
 	
-	public NewProjectDTO() {
+	public GastroITDTO() {
 	}
 
 	@Id

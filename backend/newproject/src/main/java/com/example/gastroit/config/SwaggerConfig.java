@@ -1,4 +1,4 @@
-package com.example.newproject.config;
+package com.example.gastroit.config;
 
 import java.util.Collections;
 
