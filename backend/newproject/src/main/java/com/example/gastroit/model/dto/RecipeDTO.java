@@ -14,9 +14,9 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 @Entity
-public class GastroITDTO {
+public class RecipeDTO {
 	
-	public GastroITDTO() {
+	public RecipeDTO() {
 	}
 
 	@Id

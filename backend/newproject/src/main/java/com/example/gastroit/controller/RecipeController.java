@@ -10,23 +10,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.gastroit.model.dto.GastroITDTO;
-import com.example.gastroit.service.GastroITServiceImpl;
+import com.example.gastroit.model.dto.RecipeDTO;
+import com.example.gastroit.service.RecipeServiceImpl;
 
 @RestController
 @RequestMapping("/")
-public class GastroITController {
+public class RecipeController {
 	
 	@GetMapping(produces = "application/json")
-	private List<GastroITDTO> list() {
+	private List<RecipeDTO> list() {
 		return service.list();
 	}
 	
 	@Autowired
-	private  GastroITServiceImpl service;
+	private  RecipeServiceImpl service;
 	
 	@PostMapping(path = "/create", consumes = "application/json")
-	public void create(@RequestBody GastroITDTO model) {
+	public void create(@RequestBody RecipeDTO model) {
 	    service.create(model);
 	}
 }
