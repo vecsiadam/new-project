@@ -15,11 +15,10 @@ import lombok.Data;
 @Data
 public class RecipeDTO {
 	
-	
-	private Long id;
 	private String name;
 	private List<String> ingredients;
 	private String description;
-	private int ingridientsNumber;
+	private String author;
+	
 	
 }

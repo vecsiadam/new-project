@@ -23,8 +23,8 @@ public class RecipeController {
 	private  RecipeService service;
 	
 	@PostMapping(path = "/create", consumes = "application/json")
-	public void create(@RequestBody Recipe model) {
-	    service.create(model);
+	public void create(@RequestBody RecipeDTO recipe) {
+	    service.create(recipe);
 	}
 	
 	@GetMapping(produces = "application/json")
