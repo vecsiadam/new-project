@@ -21,18 +21,18 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
             .apis(RequestHandlerSelectors
-                .basePackage("com.example.newproject.controller"))
+                .basePackage("com.example.*"))
             .paths(PathSelectors.regex("/.*"))
             .build().apiInfo(apiInfo());
     }
 	 
 	private ApiInfo apiInfo() {
 	    return new ApiInfo(
-	      "NewProject rest api", 
+	      "GastroIT rest api", 
 	      "Some custom description of API.", 
 	      "API TOS", 
 	      "Terms of service", 
-	      new Contact("Adam VECSI", "www.newproject.com", "adamvecsi94@gmail.com"), 
+	      new Contact("Adam VECSI", "www.gastroit.com", "adamvecsi94@gmail.com"), 
 	      "License of API", "API license URL", Collections.emptyList());
 	}
 }
