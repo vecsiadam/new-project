@@ -7,8 +7,10 @@ import com.example.gastroit.model.entity.Recipe;
 
 public interface RecipeService {
 
-	void create(RecipeDTO recipe);
+	RecipeDTO create(RecipeDTO recipe);
 
 	List<Recipe> list();
+
+	RecipeDTO update(String recipeId, RecipeDTO recipe);
 
 }
