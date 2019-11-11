@@ -11,6 +11,6 @@ public interface RecipeService {
 
 	List<Recipe> list();
 
-	RecipeDTO update(String recipeId, RecipeDTO recipe);
+	RecipeDTO update(Long recipeId, RecipeDTO recipe);
 
 }

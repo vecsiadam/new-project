@@ -1,5 +1,6 @@
 package com.example.gastroit.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,24 +14,34 @@ import com.example.gastroit.repository.RecipeRepository;
 @Service
 public class RecipeServiceImpl implements RecipeService {
 	@Autowired
-	private RecipeRepository RecipeRepository;
+	private RecipeRepository recipeRepository;
 
 	private RecipeConverter convert = new RecipeConverter();
 
 	@Override
 	public RecipeDTO create(RecipeDTO recipe) {
-		return convert.convertToDTO((RecipeRepository.save(convert.convertToEntity(recipe))));
+		return convert.convertToDTO((recipeRepository.save(convert.convertToEntity(recipe))));
 	}
 
 	@Override
 	public List<Recipe> list() {
-		return RecipeRepository.findAll();
+		return recipeRepository.findAll();
 	}
 
 	@Override
-	public RecipeDTO update(String recipeId, RecipeDTO recipe) {
+	public RecipeDTO update(Long recipeId, RecipeDTO recipeDTO) {
+		Recipe recipe = recipeRepository.findById(recipeId).get();
+		if (recipe == null) {
+			return null;
+		}
+		recipe.setAuthor(recipeDTO.getAuthor());
+		recipe.setDescription(recipeDTO.getDescription());
+		recipe.setName(recipeDTO.getAuthor());
+		recipe.setIngredients(recipeDTO.getIngredients());
+		recipe.setModifiedDate(new Date());
+//		recipe.setModifierUser(modifierUser);
 
-		return null;
+		return convert.convertToDTO((recipeRepository.save(recipe)));
 	}
 
 }

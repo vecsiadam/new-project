@@ -32,7 +32,7 @@ public class RecipeController {
 	}
 
 	@PostMapping(path = "/update-recipe/{recipeId}", consumes = "application/json")
-	public RecipeDTO update(@PathVariable("recipeId") String recipeId, @RequestBody RecipeDTO recipe) {
+	public RecipeDTO update(@PathVariable("recipeId") Long recipeId, @RequestBody RecipeDTO recipe) {
 		return service.update(recipeId, recipe);
 	}
 
