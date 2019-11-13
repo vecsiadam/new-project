@@ -10,20 +10,22 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 import com.example.gastroit.model.dto.Status;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Recipe {
 
-	public Recipe() {
-	}
-
+	// TODO: nem jó még az id generálás liquibase-zel
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+	@SequenceGenerator(name = "hibernate_sequence")
 	private Long id;
 	private String name;
 	@ElementCollection

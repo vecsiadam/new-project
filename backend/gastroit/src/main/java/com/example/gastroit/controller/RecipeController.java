@@ -33,7 +33,7 @@ public class RecipeController {
 		return service.list();
 	}
 
-	//TODO: update just recipe data with out ingredients (ingredients update another endpoints)
+	//TODO: update just recipe data without ingredients (ingredients update another endpoints)
 	@PutMapping(path = "/update-recipe/{recipeId}", consumes = "application/json", produces = "application/json")
 	public RecipeDTO update(@PathVariable("recipeId") Long recipeId, @RequestBody RecipeDTO recipe) {
 		return service.update(recipeId, recipe);

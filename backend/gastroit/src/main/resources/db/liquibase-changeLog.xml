@@ -1,0 +1,33 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+   http://www.liquibase.org/xml/ns/dbchangelog 
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+<!-- 	<changeSet author="adam.vecsi" id="create_id_sequence"> -->
+<!-- 		<createSequence sequenceName="hibernate_sequence" -->
+<!-- 			startValue="102" incrementBy="3" /> -->
+<!-- 	</changeSet> -->
+<!-- 	<changeSet author="adam.vecsi" id="create_recipe_table"> -->
+<!-- 		<createTable tableName="RECIPE"> -->
+<!-- 			<column name="ID" type="numeric" /> -->
+<!-- 			<column name="NAME" type="varchar(255)" /> -->
+<!-- 			<column name="DESCRIPTION" type="varchar(255)" /> -->
+<!-- 			<column name="INGRIDIENTS_NUMBER" type="numeric" /> -->
+<!-- 			<column name="AUTHOR" type="varchar(255)" /> -->
+<!-- 			<column name="CREATED_DATE" type="date" /> -->
+<!-- 			<column name="MODIFIED_DATE" type="date" /> -->
+<!-- 			<column name="MODIFIER_USER" type="varchar(255)" /> -->
+<!-- 		</createTable> -->
+<!-- 	</changeSet> -->
+<!-- 	<changeSet author="adam.vecsi" id="create_recipe_ingredients_table"> -->
+<!-- 		<createTable tableName="RECIPE_INGRIDIENTS"> -->
+<!-- 			<column name="RECIPE_ID" type="numeric" /> -->
+<!-- 			<column name="INGRIDIENTS" type="varchar(255)" /> -->
+<!-- 		</createTable> -->
+<!-- 	</changeSet> -->
+</databaseChangeLog>
