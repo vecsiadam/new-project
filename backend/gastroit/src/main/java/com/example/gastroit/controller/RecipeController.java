@@ -22,19 +22,20 @@ public class RecipeController {
 	@Autowired
 	private RecipeService service;
 
-	@PostMapping(path = "/create-recipe", consumes = "application/json")
+	@PostMapping(path = "/create-recipe", consumes = "application/json", produces = "application/json")
 	public RecipeDTO create(@RequestBody RecipeDTO recipe) {
 		return service.create(recipe);
 	}
 
 	@GetMapping(produces = "application/json")
-	private List<Recipe> list() {
+	public List<Recipe> list() {
 		return service.list();
 	}
 
-	@PutMapping(path = "/update-recipe/{recipeId}", consumes = "application/json")
+	@PutMapping(path = "/update-recipe/{recipeId}", consumes = "application/json", produces = "application/json")
 	public RecipeDTO update(@PathVariable("recipeId") Long recipeId, @RequestBody RecipeDTO recipe) {
 		return service.update(recipeId, recipe);
 	}
 
+	
 }
