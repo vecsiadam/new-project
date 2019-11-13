@@ -3,6 +3,7 @@ package com.example.gastroit.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,10 +33,24 @@ public class RecipeController {
 		return service.list();
 	}
 
+	//TODO: update just recipe data with out ingredients (ingredients update another endpoints)
 	@PutMapping(path = "/update-recipe/{recipeId}", consumes = "application/json", produces = "application/json")
 	public RecipeDTO update(@PathVariable("recipeId") Long recipeId, @RequestBody RecipeDTO recipe) {
 		return service.update(recipeId, recipe);
 	}
-
+	
+	@DeleteMapping(path = "/delete-recipe/{recipeId}")
+	public void delete(@PathVariable("recipeId") Long recipeId) {
+		service.delete(recipeId);
+	}
+	
+	// TODO: add ingredients
+	
+	// TODO: rm ingredients
+	
+	// TODO: update just ingredients
 	
 }
+
+
+// TODO: Liquibase, users api (spring security, login, registration) email sender api

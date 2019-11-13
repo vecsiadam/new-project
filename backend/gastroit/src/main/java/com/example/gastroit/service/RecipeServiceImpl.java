@@ -51,4 +51,9 @@ public class RecipeServiceImpl implements RecipeService {
 		return convert.convertToDTO((recipeRepository.save(recipe)));
 	}
 
+	@Override
+	public void delete(Long recipeId) {
+		recipeRepository.delete(recipeRepository.findById(recipeId).get());
+	}
+
 }
