@@ -1,5 +1,5 @@
 # New project
-A New projekt egy pár évvel ezelőtti egyetemi feladat megvalósítása és tovább gondolása. Első körben három kisebb backend alkalmazásból fog állni.
+A New projekt egy pár évvel ezelőtti egyetemi feladat megvalósítása és tovább gondolása. Első körben három kisebb backend alkalmazásból fog állni. Ez a projekt gyakorlás és új technikák/megoldások kipróbálása végett jött létre.
 
 - GastroIT alkalmazás ami receptek menedzselésére alkalmas alkalmazás
   - Spring Boot 2.2.0.RELEASE
