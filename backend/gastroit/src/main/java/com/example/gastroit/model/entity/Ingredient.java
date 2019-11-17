@@ -1,11 +1,17 @@
 package com.example.gastroit.model.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,5 +32,9 @@ public class Ingredient {
 
 	@OneToOne
 	Unit unit;
+
+	@ManyToMany(mappedBy = "ingredients")
+	@JsonIgnore
+	private List<Recipe> recipes = new ArrayList<>();
 
 }
