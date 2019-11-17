@@ -41,4 +41,18 @@ public class Recipe {
 	private String modifierUser;
 	@Enumerated(EnumType.STRING)
 	private Status status;
+
+	public Recipe(String name, List<Ingredient> ingredients, String description, String author, Date createdDate,
+			Date modifiedDate, String modifierUser, Status status) {
+		super();
+		this.name = name;
+		this.ingredients = ingredients;
+		this.description = description;
+		this.author = author;
+		this.createdDate = createdDate;
+		this.modifiedDate = modifiedDate;
+		this.modifierUser = modifierUser;
+		this.status = status;
+	}
+
 }

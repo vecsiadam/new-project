@@ -37,4 +37,11 @@ public class Ingredient {
 	@JsonIgnore
 	private List<Recipe> recipes = new ArrayList<>();
 
+	public Ingredient(String name, Double number, Unit unit) {
+		super();
+		this.name = name;
+		this.number = number;
+		this.unit = unit;
+	}
+
 }
