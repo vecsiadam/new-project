@@ -1,6 +1,5 @@
 package com.example.gastroit.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -53,7 +52,7 @@ public class RecipeServiceImpl implements RecipeService {
 		if (updateRecipe.getIngredients() != null) {
 			recipe.setIngredients(ingredientConverter.convertLitstToEntityList(updateRecipe.getIngredients()));
 		}
-		recipe.setModifiedDate(new Date());
+
 		recipe.setModifierUser("MÓDOSÍTUSER");
 
 		return recipeRepository.save(recipe);
