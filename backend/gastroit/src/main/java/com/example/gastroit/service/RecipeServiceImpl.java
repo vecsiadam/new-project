@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.gastroit.converter.IngredientConverter;
 import com.example.gastroit.converter.RecipeConverter;
 import com.example.gastroit.exception.RecipeNotFoundException;
 import com.example.gastroit.model.dto.RecipeDTO;
@@ -38,6 +39,7 @@ public class RecipeServiceImpl implements RecipeService {
 		}
 
 		Recipe recipe = recipeRepository.findById(recipeId).get();
+		IngredientConverter ingredientConverter = new IngredientConverter();
 
 		if (updateRecipe.getAuthor() != null) {
 			recipe.setAuthor(updateRecipe.getAuthor());
@@ -48,14 +50,12 @@ public class RecipeServiceImpl implements RecipeService {
 		if (updateRecipe.getName() != null) {
 			recipe.setName(updateRecipe.getName());
 		}
-
-//		if(recipeDTO.getIngredients()!=null) {
-//			recipe.setIngredients(recipeDTO.getIngredients());
-//		}
-
+		if (updateRecipe.getIngredients() != null) {
+			recipe.setIngredients(ingredientConverter.convertLitstToEntityList(updateRecipe.getIngredients()));
+		}
 		recipe.setModifiedDate(new Date());
+		recipe.setModifierUser("MÓDOSÍTUSER");
 
-//		recipe.setModifierUser(modifierUser);
 		return recipeRepository.save(recipe);
 	}
 
