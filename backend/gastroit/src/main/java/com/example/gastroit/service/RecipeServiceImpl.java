@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.gastroit.converter.RecipeConverter;
 import com.example.gastroit.exception.RecipeNotFoundException;
+import com.example.gastroit.model.dto.RecipeDTO;
 import com.example.gastroit.model.entity.Recipe;
 import com.example.gastroit.repository.RecipeRepository;
 
@@ -18,8 +20,9 @@ public class RecipeServiceImpl implements RecipeService {
 	private final RecipeRepository recipeRepository;
 
 	@Override
-	public Recipe create(Recipe recipe) {
-		return recipeRepository.save(recipe);
+	public Recipe create(RecipeDTO recipe) {
+		RecipeConverter recipeConverter = new RecipeConverter();
+		return recipeRepository.save(recipeConverter.convertToEntity(recipe));
 	}
 
 	@Override
@@ -28,7 +31,7 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 
 	@Override
-	public Recipe update(Long recipeId, Recipe updateRecipe) {
+	public Recipe update(Long recipeId, RecipeDTO updateRecipe) {
 
 		if (list().stream().noneMatch(u -> u.getId().equals(recipeId))) {
 			throw new RecipeNotFoundException();

@@ -14,8 +14,9 @@ import lombok.NoArgsConstructor;
 public class RecipeConverter {
 
 	public Recipe convertToEntity(final RecipeDTO recipeDTO) {
-		return new Recipe(recipeDTO.getName(), recipeDTO.getIngredients(), recipeDTO.getDescription(),
-				recipeDTO.getAuthor(), new Date(), null, null, Status.WAITING);
+		IngredientConverter ingredientConverter = new IngredientConverter();
+		return new Recipe(recipeDTO.getName(), ingredientConverter.convertLitstToEntityList(recipeDTO.getIngredients()),
+				recipeDTO.getDescription(), recipeDTO.getAuthor(), new Date(), null, null, Status.WAITING);
 	}
 //
 //	public RecipeDTO convertToDTO(final Recipe recipe) {
