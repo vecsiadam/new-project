@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.gastroit.exception.RecipeNotFoundException;
 import com.example.gastroit.model.entity.Recipe;
 import com.example.gastroit.repository.RecipeRepository;
 
@@ -28,10 +29,13 @@ public class RecipeServiceImpl implements RecipeService {
 
 	@Override
 	public Recipe update(Long recipeId, Recipe updateRecipe) {
-		Recipe recipe = recipeRepository.findById(recipeId).get();
-		if (recipe == null) {
-			return null;
+
+		if (list().stream().noneMatch(u -> u.getId().equals(recipeId))) {
+			throw new RecipeNotFoundException();
 		}
+
+		Recipe recipe = recipeRepository.findById(recipeId).get();
+
 		if (updateRecipe.getAuthor() != null) {
 			recipe.setAuthor(updateRecipe.getAuthor());
 		}
@@ -41,10 +45,13 @@ public class RecipeServiceImpl implements RecipeService {
 		if (updateRecipe.getName() != null) {
 			recipe.setName(updateRecipe.getName());
 		}
+
 //		if(recipeDTO.getIngredients()!=null) {
 //			recipe.setIngredients(recipeDTO.getIngredients());
 //		}
+
 		recipe.setModifiedDate(new Date());
+
 //		recipe.setModifierUser(modifierUser);
 		return recipeRepository.save(recipe);
 	}
