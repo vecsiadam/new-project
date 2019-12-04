@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
 
 import com.example.gastroit.model.dto.Status;
 
@@ -24,22 +24,35 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 public class Recipe {
-
-	// TODO: nem jó még az id generálás liquibase-zel
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rec_seq")
-	@SequenceGenerator(name = "rec_seq")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
+
+	@Column(name = "name")
 	private String name;
+
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "recipe_ingredients", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "ingredients_id"))
 	private List<Ingredient> ingredients;
+
+	@Column(name = "description")
 	private String description;
+
+	@Column(name = "author")
 	private String author;
+
+	@Column(name = "createdDate")
 	private Date createdDate;
+
+	@Column(name = "modifiedDate")
 	private Date modifiedDate;
+
+	@Column(name = "modifierUser")
 	private String modifierUser;
+
 	@Enumerated(EnumType.STRING)
+	@Column(name = "status")
 	private Status status;
 
 	public Recipe(String name, List<Ingredient> ingredients, String description, String author, Date createdDate,

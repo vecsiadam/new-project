@@ -1,10 +1,10 @@
 package com.example.gastroit.model.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,9 +15,10 @@ import lombok.NoArgsConstructor;
 public class Unit {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "unit_seq")
-	@SequenceGenerator(name = "unit_seq")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	Long id;
 
+	@Column(name = "name")
 	String name;
 }

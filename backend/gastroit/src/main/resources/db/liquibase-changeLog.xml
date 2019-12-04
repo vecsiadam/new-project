@@ -7,27 +7,48 @@
    http://www.liquibase.org/xml/ns/dbchangelog 
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
+	<changeSet author="adam.vecsi" id="create_recipe_table">
+		<createTable tableName="recipe">
+			<column autoIncrement="true" name="id" type="SERIAL">
+				<constraints primaryKey="true"
+					primaryKeyName="recipe_pkey" />
+			</column>
+			<column name="name" type="varchar(255)" />
+			<column name="description" type="varchar(255)" />
+			<column name="author" type="varchar(255)" />
+			<column name="created_date" type="date" />
+			<column name="modified_date" type="date" />
+			<column name="modifier_user" type="varchar(255)" />
+			<column name="status" type="varchar(255)" />
+		</createTable>
+	</changeSet>
 
-<!-- 	<changeSet author="adam.vecsi" id="create_id_sequence"> -->
-<!-- 		<createSequence sequenceName="hibernate_sequence" -->
-<!-- 			startValue="102" incrementBy="3" /> -->
-<!-- 	</changeSet> -->
-<!-- 	<changeSet author="adam.vecsi" id="create_recipe_table"> -->
-<!-- 		<createTable tableName="RECIPE"> -->
-<!-- 			<column name="ID" type="numeric" /> -->
-<!-- 			<column name="NAME" type="varchar(255)" /> -->
-<!-- 			<column name="DESCRIPTION" type="varchar(255)" /> -->
-<!-- 			<column name="INGRIDIENTS_NUMBER" type="numeric" /> -->
-<!-- 			<column name="AUTHOR" type="varchar(255)" /> -->
-<!-- 			<column name="CREATED_DATE" type="date" /> -->
-<!-- 			<column name="MODIFIED_DATE" type="date" /> -->
-<!-- 			<column name="MODIFIER_USER" type="varchar(255)" /> -->
-<!-- 		</createTable> -->
-<!-- 	</changeSet> -->
-<!-- 	<changeSet author="adam.vecsi" id="create_recipe_ingredients_table"> -->
-<!-- 		<createTable tableName="RECIPE_INGRIDIENTS"> -->
-<!-- 			<column name="RECIPE_ID" type="numeric" /> -->
-<!-- 			<column name="INGRIDIENTS" type="varchar(255)" /> -->
-<!-- 		</createTable> -->
-<!-- 	</changeSet> -->
+	<changeSet author="adam.vecsi" id="create_unit_table">
+		<createTable tableName="unit">
+			<column autoIncrement="true" name="id" type="SERIAL">
+				<constraints primaryKey="true"
+					primaryKeyName="unit_pkey" />
+			</column>
+			<column name="name" type="varchar(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="adam.vecsi" id="create_join_table">
+		<createTable tableName="recipe_ingredients">
+			<column name="recipe_id" type="numeric" />
+			<column name="ingredients_id" type="varchar(255)" />
+		</createTable>
+	</changeSet>
+
+	<changeSet author="adam.vecsi" id="create_ingredients_table">
+		<createTable tableName="ingredient">
+			<column autoIncrement="true" name="id" type="SERIAL">
+				<constraints primaryKey="true"
+					primaryKeyName="ingredient_pkey" />
+			</column>
+			<column name="name" type="varchar(255)" />
+			<column name="number" type="numeric" />
+			<column name="unit_id" type="numeric" />
+		</createTable>
+	</changeSet>
+
 </databaseChangeLog>
