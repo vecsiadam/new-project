@@ -46,5 +46,3 @@ public class RecipeController {
 		repositoryService.delete(recipeId);
 	}
 }
-
-// TODO: Liquibase, users api (spring security, login, registration) email sender api
