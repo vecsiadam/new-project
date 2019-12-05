@@ -1,0 +1,54 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+   http://www.liquibase.org/xml/ns/dbchangelog 
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+<!-- 	<changeSet author="adam.vecsi" id="create_recipe_table"> -->
+<!-- 		<createTable tableName="recipe"> -->
+<!-- 			<column autoIncrement="true" name="id" type="SERIAL"> -->
+<!-- 				<constraints primaryKey="true" -->
+<!-- 					primaryKeyName="recipe_pkey" /> -->
+<!-- 			</column> -->
+<!-- 			<column name="name" type="varchar(255)" /> -->
+<!-- 			<column name="description" type="varchar(255)" /> -->
+<!-- 			<column name="author" type="varchar(255)" /> -->
+<!-- 			<column name="created_date" type="date" /> -->
+<!-- 			<column name="modified_date" type="date" /> -->
+<!-- 			<column name="modifier_user" type="varchar(255)" /> -->
+<!-- 			<column name="status" type="varchar(255)" /> -->
+<!-- 		</createTable> -->
+<!-- 	</changeSet> -->
+
+<!-- 	<changeSet author="adam.vecsi" id="create_unit_table"> -->
+<!-- 		<createTable tableName="unit"> -->
+<!-- 			<column autoIncrement="true" name="id" type="SERIAL"> -->
+<!-- 				<constraints primaryKey="true" -->
+<!-- 					primaryKeyName="unit_pkey" /> -->
+<!-- 			</column> -->
+<!-- 			<column name="name" type="varchar(255)" /> -->
+<!-- 		</createTable> -->
+<!-- 	</changeSet> -->
+<!-- 	<changeSet author="adam.vecsi" id="create_join_table"> -->
+<!-- 		<createTable tableName="recipe_ingredients"> -->
+<!-- 			<column name="recipe_id" type="numeric" /> -->
+<!-- 			<column name="ingredients_id" type="varchar(255)" /> -->
+<!-- 		</createTable> -->
+<!-- 	</changeSet> -->
+
+<!-- 	<changeSet author="adam.vecsi" id="create_ingredients_table"> -->
+<!-- 		<createTable tableName="ingredient"> -->
+<!-- 			<column autoIncrement="true" name="id" type="SERIAL"> -->
+<!-- 				<constraints primaryKey="true" -->
+<!-- 					primaryKeyName="ingredient_pkey" /> -->
+<!-- 			</column> -->
+<!-- 			<column name="name" type="varchar(255)" /> -->
+<!-- 			<column name="number" type="numeric" /> -->
+<!-- 			<column name="unit_id" type="numeric" /> -->
+<!-- 		</createTable> -->
+<!-- 	</changeSet> -->
+
+</databaseChangeLog>
