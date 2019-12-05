@@ -50,13 +50,6 @@ public class RecipeServiceImpl implements RecipeService {
 			throw new RecipeNotFoundException();
 		}
 
-		List<Unit> units = unitRepository.findAll();
-		for (IngredientDTO ingredient : updateRecipe.getIngredients()) {
-			if (units.stream().noneMatch(u -> u.getName().equals(ingredient.getUnit()))) {
-				throw new UnitNotFoundException(ingredient.getUnit());
-			}
-		}
-
 		Recipe recipe = recipeRepository.findById(recipeId).get();
 		IngredientConverter ingredientConverter = new IngredientConverter();
 
@@ -70,6 +63,12 @@ public class RecipeServiceImpl implements RecipeService {
 			recipe.setName(updateRecipe.getName());
 		}
 		if (updateRecipe.getIngredients() != null) {
+			List<Unit> units = unitRepository.findAll();
+			for (IngredientDTO ingredient : updateRecipe.getIngredients()) {
+				if (units.stream().noneMatch(u -> u.getName().equals(ingredient.getUnit()))) {
+					throw new UnitNotFoundException(ingredient.getUnit());
+				}
+			}
 			recipe.setIngredients(ingredientConverter.convertLitstToEntityList(updateRecipe.getIngredients(), units));
 		}
 
