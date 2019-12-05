@@ -9,7 +9,7 @@
 
 	<changeSet author="adam.vecsi" id="create_recipe_table">
 		<createTable tableName="recipe">
-			<column autoIncrement="true" name="id" type="SERIAL">
+			<column autoIncrement="true" name="id" type="bigint">
 				<constraints primaryKey="true"
 					primaryKeyName="recipe_pkey" />
 			</column>
@@ -25,7 +25,7 @@
 
 	<changeSet author="adam.vecsi" id="create_unit_table">
 		<createTable tableName="unit">
-			<column autoIncrement="true" name="id" type="SERIAL">
+			<column autoIncrement="true" name="id" type="bigint">
 				<constraints primaryKey="true"
 					primaryKeyName="unit_pkey" />
 			</column>
@@ -34,20 +34,20 @@
 	</changeSet>
 	<changeSet author="adam.vecsi" id="create_join_table">
 		<createTable tableName="recipe_ingredients">
-			<column name="recipe_id" type="numeric" />
-			<column name="ingredients_id" type="varchar(255)" />
+			<column name="recipe_id" type="bigint" />
+			<column name="ingredients_id" type="bigint" />
 		</createTable>
 	</changeSet>
 
 	<changeSet author="adam.vecsi" id="create_ingredients_table">
 		<createTable tableName="ingredient">
-			<column autoIncrement="true" name="id" type="SERIAL">
+			<column autoIncrement="true" name="id" type="bigint">
 				<constraints primaryKey="true"
 					primaryKeyName="ingredient_pkey" />
 			</column>
 			<column name="name" type="varchar(255)" />
-			<column name="number" type="numeric" />
-			<column name="unit_id" type="numeric" />
+			<column name="number" type="double" />
+			<column name="unit_id" type="bigint" />
 		</createTable>
 	</changeSet>
 
