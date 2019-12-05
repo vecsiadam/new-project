@@ -21,4 +21,12 @@ public class Unit {
 
 	@Column(name = "name")
 	String name;
+
+	public Unit(Long id) {
+		this.id = id;
+	}
+
+	public Unit(String name) {
+		this.name = name;
+	}
 }

@@ -7,9 +7,13 @@ import org.springframework.stereotype.Service;
 import com.example.gastroit.converter.IngredientConverter;
 import com.example.gastroit.converter.RecipeConverter;
 import com.example.gastroit.exception.RecipeNotFoundException;
+import com.example.gastroit.exception.UnitNotFoundException;
+import com.example.gastroit.model.dto.IngredientDTO;
 import com.example.gastroit.model.dto.RecipeDTO;
 import com.example.gastroit.model.entity.Recipe;
+import com.example.gastroit.model.entity.Unit;
 import com.example.gastroit.repository.RecipeRepository;
+import com.example.gastroit.repository.UnitRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -19,10 +23,19 @@ public class RecipeServiceImpl implements RecipeService {
 
 	private final RecipeRepository recipeRepository;
 
+	private final UnitRepository unitRepository;
+
 	@Override
 	public Recipe create(RecipeDTO recipe) {
+		List<Unit> units = unitRepository.findAll();
+		for (IngredientDTO ingredient : recipe.getIngredients()) {
+			if (units.stream().noneMatch(u -> u.getName().equals(ingredient.getUnit()))) {
+				throw new UnitNotFoundException(ingredient.getUnit());
+			}
+		}
 		RecipeConverter recipeConverter = new RecipeConverter();
-		return recipeRepository.save(recipeConverter.convertToEntity(recipe));
+		Recipe rec = recipeConverter.convertToEntity(recipe, units);
+		return recipeRepository.save(rec);
 	}
 
 	@Override
@@ -35,6 +48,13 @@ public class RecipeServiceImpl implements RecipeService {
 
 		if (list().stream().noneMatch(u -> u.getId().equals(recipeId))) {
 			throw new RecipeNotFoundException();
+		}
+
+		List<Unit> units = unitRepository.findAll();
+		for (IngredientDTO ingredient : updateRecipe.getIngredients()) {
+			if (units.stream().noneMatch(u -> u.getName().equals(ingredient.getUnit()))) {
+				throw new UnitNotFoundException(ingredient.getUnit());
+			}
 		}
 
 		Recipe recipe = recipeRepository.findById(recipeId).get();
@@ -50,7 +70,7 @@ public class RecipeServiceImpl implements RecipeService {
 			recipe.setName(updateRecipe.getName());
 		}
 		if (updateRecipe.getIngredients() != null) {
-			recipe.setIngredients(ingredientConverter.convertLitstToEntityList(updateRecipe.getIngredients()));
+			recipe.setIngredients(ingredientConverter.convertLitstToEntityList(updateRecipe.getIngredients(), units));
 		}
 
 		recipe.setModifierUser("MÓDOSÍTUSER");

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.gastroit.converter.UnitConverter;
 import com.example.gastroit.model.entity.Unit;
 import com.example.gastroit.service.UnitService;
 
@@ -23,8 +24,9 @@ public class UnitController {
 	private final UnitService unitService;
 
 	@PostMapping(consumes = "application/json", produces = "application/json")
-	public Unit create(@RequestBody Unit unit) {
-		return unitService.create(unit);
+	public Unit create(@RequestBody String unit) {
+		UnitConverter unitConverter = new UnitConverter();
+		return unitService.create(unitConverter.convertToEntity(unit));
 	}
 
 	@DeleteMapping(path = "/{id}", produces = "application/json")

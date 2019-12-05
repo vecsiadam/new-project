@@ -7,4 +7,8 @@ public class UnitNotFoundException extends RuntimeException {
 	public UnitNotFoundException() {
 		super("The unit does not exist!");
 	}
+
+	public UnitNotFoundException(String unit) {
+		super("The unit does not exist: " + unit);
+	}
 }
