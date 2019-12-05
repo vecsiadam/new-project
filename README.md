@@ -9,7 +9,7 @@ A New project egy pár évvel ezelőtti egyetemi feladat megvalósítása és to
   - Hibernate
   - MySQL
 - Login/Registration és email küldő alkalmazás, amely felhasználók menedzselésére alkalmas.
-  - Spring Boot 2.2.0.RELEASE
+  - Spring Boot 2.2.1.RELEASE
   - Java 11
   - Maven
   - Liquibase
