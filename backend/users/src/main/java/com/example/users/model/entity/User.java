@@ -1,4 +1,4 @@
-package com.example.users.model;
+package com.example.users.model.entity;
 
 import java.util.Date;
 
@@ -13,6 +13,9 @@ import javax.persistence.Id;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.example.users.model.dto.Role;
+import com.example.users.model.dto.Status;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,6 +37,9 @@ public class User {
 	@Column(name = "password")
 	private String password;
 
+	@Column(name = "salt")
+	private String salt;
+
 	@Column(name = "username")
 	private String username;
 
@@ -50,4 +56,8 @@ public class User {
 	@Column(name = "status")
 	@Enumerated(EnumType.STRING)
 	private Status status;
+
+	@Column(name = "role")
+	@Enumerated(EnumType.STRING)
+	private Role role;
 }
