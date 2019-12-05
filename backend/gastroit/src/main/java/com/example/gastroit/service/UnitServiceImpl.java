@@ -2,7 +2,6 @@ package com.example.gastroit.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.gastroit.exception.UnitAlreadyExistException;
@@ -10,11 +9,13 @@ import com.example.gastroit.exception.UnitNotFoundException;
 import com.example.gastroit.model.entity.Unit;
 import com.example.gastroit.repository.UnitRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class UnitServiceImpl implements UnitService {
 
-	@Autowired
-	UnitRepository unitRepository;
+	private final UnitRepository unitRepository;
 
 	@Override
 	public Unit create(Unit unit) {
