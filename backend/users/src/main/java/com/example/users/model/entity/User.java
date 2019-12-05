@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.example.users.model.dto.LoginStatus;
 import com.example.users.model.dto.Role;
 import com.example.users.model.dto.Status;
 
@@ -60,4 +61,8 @@ public class User {
 	@Column(name = "role")
 	@Enumerated(EnumType.STRING)
 	private Role role;
+
+	@Column(name = "login_status")
+	@Enumerated(EnumType.STRING)
+	private LoginStatus loginStatus;
 }

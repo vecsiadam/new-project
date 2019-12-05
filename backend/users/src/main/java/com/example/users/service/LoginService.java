@@ -6,4 +6,6 @@ public interface LoginService {
 
 	String login(LoginRequest loginRequest);
 
+	void logout(Long id);
+
 }

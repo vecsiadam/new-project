@@ -24,4 +24,9 @@
 			<column name="salt" type="varchar(255)" />
 		</createTable>
 	</changeSet>
+	<changeSet author="adam.vecsi" id="add_login_status_column">
+    <addColumn tableName="user">
+        <column name="login_status" type="varchar(255)"/>
+    </addColumn>
+</changeSet>
 </databaseChangeLog>
