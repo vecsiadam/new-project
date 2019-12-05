@@ -7,6 +7,20 @@
    http://www.liquibase.org/xml/ns/dbchangelog 
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-
+	<changeSet author="adam.vecsi" id="create_recipe_table">
+		<createTable tableName="user">
+			<column autoIncrement="true" name="id" type="bigint">
+				<constraints primaryKey="true"
+					primaryKeyName="user_pkey" />
+			</column>
+			<column name="name" type="varchar(255)" />
+			<column name="password" type="varchar(255)" />
+			<column name="username" type="varchar(255)" />
+			<column name="created_date" type="date" />
+			<column name="email_token" type="varchar(255)" />
+			<column name="email" type="varchar(255)" />
+			<column name="status" type="varchar(255)" />
+		</createTable>
+	</changeSet>
 
 </databaseChangeLog>
