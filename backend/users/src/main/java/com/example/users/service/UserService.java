@@ -8,11 +8,9 @@ import com.example.users.model.entity.User;
 
 public interface UserService {
 
-	User create(User user);
-
 	void delete(Long id);
 
-	User findByEmailToken(String emailToken);
+	User findById(Long id);
 
 	List<User> list();
 
