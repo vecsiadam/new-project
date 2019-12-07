@@ -2,11 +2,12 @@ package com.example.users.service;
 
 import org.springframework.stereotype.Service;
 
-import com.example.users.config.PasswordUtils;
+import com.example.users.exception.UsernameOrPasswordNotCorrectException;
 import com.example.users.model.dto.LoginRequest;
 import com.example.users.model.dto.LoginStatus;
 import com.example.users.model.entity.User;
 import com.example.users.repository.UserRepository;
+import com.example.users.util.PasswordUtils;
 
 import lombok.AllArgsConstructor;
 
@@ -19,13 +20,16 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public String login(LoginRequest loginRequest) {
 		User user = userRepository.findByUsername(loginRequest.getUsername());
-
-		if (PasswordUtils.verifyUserPassword(loginRequest.getPassword(), user.getPassword(), user.getSalt())) {
-			user.setLoginStatus(LoginStatus.LOGGED_IN);
-			userRepository.save(user);
-			return "BE VAGY JELENTKEZVE BÁTTYA";
+		if (user == null) {
+			throw new UsernameOrPasswordNotCorrectException();
 		}
-		return "EZ MOST NEM JÖTT ÖSSZE";
+
+		if (!PasswordUtils.verifyUserPassword(loginRequest.getPassword(), user.getPassword(), user.getSalt())) {
+			throw new UsernameOrPasswordNotCorrectException();
+		}
+		user.setLoginStatus(LoginStatus.LOGGED_IN);
+		userRepository.save(user);
+		return "BE VAGY JELENTKEZVE BÁTTYA";
 	}
 
 	@Override
