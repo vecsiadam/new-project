@@ -1,4 +1,4 @@
-package com.example.users.config;
+package com.example.users.util;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -61,4 +61,29 @@ public class PasswordUtils {
 
 		return returnValue;
 	}
+
+	public static boolean passwordOk(String password) {
+		if (password == null) {
+			return false;
+		}
+		if (password.length() < 8 || password.length() > 16) {
+			return false;
+		}
+		boolean containsUpperCase = false;
+		boolean containsLowerCase = false;
+		boolean containsDigit = false;
+		for (char ch : password.toCharArray()) {
+			if (Character.isUpperCase(ch)) {
+				containsUpperCase = true;
+			}
+			if (Character.isLowerCase(ch)) {
+				containsLowerCase = true;
+			}
+			if (Character.isDigit(ch)) {
+				containsDigit = true;
+			}
+		}
+		return containsUpperCase && containsLowerCase && containsDigit;
+	}
+
 }
