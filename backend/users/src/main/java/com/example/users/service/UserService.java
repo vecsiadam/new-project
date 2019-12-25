@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.users.model.dto.RegistrationConfirmRequest;
 import com.example.users.model.dto.RegistrationRequest;
+import com.example.users.model.dto.UserDTO;
 import com.example.users.model.entity.User;
 
 public interface UserService {
@@ -18,6 +19,6 @@ public interface UserService {
 
 	User registrationConfirmation(RegistrationConfirmRequest registrationConfirmationRequest);
 
-	User update(Long id, User user);
+	User update(Long id, UserDTO user);
 
 }

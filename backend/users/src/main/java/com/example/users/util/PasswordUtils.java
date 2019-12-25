@@ -10,6 +10,9 @@ import java.util.Random;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public class PasswordUtils {
 
 	private static final Random RANDOM = new SecureRandom();

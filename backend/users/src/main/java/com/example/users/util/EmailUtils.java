@@ -4,6 +4,9 @@ import org.apache.commons.validator.routines.EmailValidator;
 
 import com.example.users.exception.EmailNotValidException;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public class EmailUtils {
 
 	public static String emailValidation(String email) {
