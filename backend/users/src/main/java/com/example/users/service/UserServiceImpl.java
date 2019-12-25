@@ -33,6 +33,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void delete(Long id) {
 		User user = userRepository.findById(id).get();
+		if (user == null) {
+			log.error("User not exist! id: {}", id);
+			throw new UserNotFoundException();
+		}
 		userRepository.delete(user);
 
 	}
@@ -124,12 +128,18 @@ public class UserServiceImpl implements UserService {
 			throw new UserNotFoundException();
 		}
 
-		if (updatableUser.getName() != null) {
+		if (updatableUser.getName() != null && userRepository.findByUsername(updatableUser.getName()) == null) {
 			user.setName(updatableUser.getName());
+		} else {
+			log.error("Username already exist! username: {}", updatableUser.getName());
+			throw new UsernameAlreadyExistsException(updatableUser.getName());
 		}
 
-		if (updatableUser.getEmail() != null) {
+		if (updatableUser.getEmail() != null && userRepository.findByEmail(updatableUser.getEmail()) == null) {
 			user.setEmail(EmailUtils.emailValidation(updatableUser.getEmail()));
+		} else {
+			log.error("Email already exist! email: {}", updatableUser.getEmail());
+			throw new EmailAlreadyExistsException(updatableUser.getEmail());
 		}
 
 		if (updatableUser.getUsername() != null) {
