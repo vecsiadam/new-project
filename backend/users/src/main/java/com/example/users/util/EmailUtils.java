@@ -7,7 +7,7 @@ import com.example.users.exception.EmailNotValidException;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class EmailUtils {
+public final class EmailUtils {
 
 	public static String emailValidation(String email) {
 		if (!EmailValidator.getInstance().isValid(email)) {

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.example.users.exception.EmailAlreadyExistsException;
@@ -20,15 +22,35 @@ import com.example.users.repository.UserRepository;
 import com.example.users.util.EmailUtils;
 import com.example.users.util.PasswordUtils;
 
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-@AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
-	private final UserRepository userRepository;
+	@Autowired
+	private UserRepository userRepository;
+
+	@Autowired
+	private EmailService emailService;
+
+	@Value("${email.registration.subject}")
+	private String registrationSubject;
+
+	@Value("${email.registration.text}")
+	private String registrationText;
+
+	@Value("${email.confirmation.subject}")
+	private String confirmationSubject;
+
+	@Value("${email.confirmation.text}")
+	private String confirmationText;
+
+	@Value("${email.update.subject}")
+	private String updateSubject;
+
+	@Value("${email.update.text}")
+	private String updateText;
 
 	@Override
 	public void delete(Long id) {
@@ -87,6 +109,7 @@ public class UserServiceImpl implements UserService {
 		user.setName(registrationRequest.getName());
 		user.setStatus(Status.REGISTRATED);
 		user.setEmailToken(UUID.randomUUID().toString());
+		emailService.sendEmail(registrationRequest.getEmail(), registrationSubject, registrationText);
 		return userRepository.save(user);
 	}
 
@@ -115,8 +138,8 @@ public class UserServiceImpl implements UserService {
 		user.setSalt(salt);
 		user.setPassword(PasswordUtils.generateSecurePassword(registrationConfirmationRequest.getPassword(), salt));
 		user.setRole(registrationConfirmationRequest.getRole());
-
 		user.setStatus(Status.CONFIRMED);
+		emailService.sendEmail(user.getEmail(), confirmationSubject, confirmationText);
 		return userRepository.save(user);
 	}
 
@@ -145,7 +168,7 @@ public class UserServiceImpl implements UserService {
 		if (updatableUser.getUsername() != null) {
 			user.setUsername(updatableUser.getUsername());
 		}
-
+		emailService.sendEmail(user.getEmail(), confirmationSubject, confirmationText);
 		return userRepository.save(user);
 	}
 
