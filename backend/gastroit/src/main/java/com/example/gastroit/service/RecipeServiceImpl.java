@@ -33,8 +33,7 @@ public class RecipeServiceImpl implements RecipeService {
 				throw new UnitNotFoundException(ingredient.getUnit());
 			}
 		}
-		RecipeConverter recipeConverter = new RecipeConverter();
-		Recipe rec = recipeConverter.convertToEntity(recipe, units);
+		Recipe rec = RecipeConverter.convertToEntity(recipe, units);
 		return recipeRepository.save(rec);
 	}
 
@@ -51,7 +50,6 @@ public class RecipeServiceImpl implements RecipeService {
 		}
 
 		Recipe recipe = recipeRepository.findById(recipeId).get();
-		IngredientConverter ingredientConverter = new IngredientConverter();
 
 		if (updateRecipe.getAuthor() != null) {
 			recipe.setAuthor(updateRecipe.getAuthor());
@@ -69,7 +67,7 @@ public class RecipeServiceImpl implements RecipeService {
 					throw new UnitNotFoundException(ingredient.getUnit());
 				}
 			}
-			recipe.setIngredients(ingredientConverter.convertLitstToEntityList(updateRecipe.getIngredients(), units));
+			recipe.setIngredients(IngredientConverter.convertLitstToEntityList(updateRecipe.getIngredients(), units));
 		}
 
 		recipe.setModifierUser("MÓDOSÍTUSER");

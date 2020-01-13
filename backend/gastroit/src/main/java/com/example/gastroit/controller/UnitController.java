@@ -25,8 +25,7 @@ public class UnitController {
 
 	@PostMapping(consumes = "application/json", produces = "application/json")
 	public Unit create(@RequestBody String unit) {
-		UnitConverter unitConverter = new UnitConverter();
-		return unitService.create(unitConverter.convertToEntity(unit));
+		return unitService.create(UnitConverter.convertToEntity(unit));
 	}
 
 	@DeleteMapping(path = "/{id}", produces = "application/json")

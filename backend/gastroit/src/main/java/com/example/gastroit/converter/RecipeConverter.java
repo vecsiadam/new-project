@@ -7,17 +7,14 @@ import com.example.gastroit.model.dto.Status;
 import com.example.gastroit.model.entity.Recipe;
 import com.example.gastroit.model.entity.Unit;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 
-@NoArgsConstructor
-@Data
-public class RecipeConverter {
+@UtilityClass
+public final class RecipeConverter {
 
-	public Recipe convertToEntity(final RecipeDTO recipeDTO, final List<Unit> units) {
-		IngredientConverter ingredientConverter = new IngredientConverter();
+	public static Recipe convertToEntity(final RecipeDTO recipeDTO, final List<Unit> units) {
 		return new Recipe(recipeDTO.getName(),
-				ingredientConverter.convertLitstToEntityList(recipeDTO.getIngredients(), units),
+				IngredientConverter.convertLitstToEntityList(recipeDTO.getIngredients(), units),
 				recipeDTO.getDescription(), recipeDTO.getAuthor(), null, Status.WAITING);
 	}
 }
